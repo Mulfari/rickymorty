@@ -1,20 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './styles/CharacterCard.css';
-
-const CharacterCard = ({ character }) => {
-  const history = useHistory();
-
-  const handleClick = () => {
-    history.push(`/personaje/${character.id}`);
-  };
-
+const CharacterCard = (props) => {
   return (
-    <div className="character-card" onClick={handleClick}>
-      <img src={character.image} alt={character.name} />
-      <h3>{character.name}</h3>
-      <p>Especie: {character.species}</p>
-      <p>Estado: {character.status}</p>
+    <div className="card">
+      <img src={props.image} alt={props.name} />
+      <h3>{props.name}</h3>
+      <p>Gender: {props.gender}</p>
+      <p>Species: {props.species}</p>
+      <p>Status: {props.status}</p>
     </div>
   );
 };
