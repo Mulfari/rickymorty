@@ -8,6 +8,12 @@ const CharacterCard = ({ character }) => {
     setModalOpen(!modalOpen);
   };
 
+  const closeModalOutside = (event) => {
+    if (event.target.classList.contains('modal')) {
+      setModalOpen(false);
+    }
+  };
+
   return (
     <>
       <div className="character-card" onClick={toggleModal}>
@@ -17,9 +23,9 @@ const CharacterCard = ({ character }) => {
       </div>
 
       {modalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={toggleModal}>&times;</span>
+        <div className={`modal ${modalOpen ? 'open' : ''}`} onClick={closeModalOutside} role="dialog" aria-modal="true">
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={toggleModal} tabIndex="0" aria-label="Cerrar modal">&times;</span>
             <h2>{character.name}</h2>
             <img src={character.image} alt={character.name} />
             <p>Especie: {character.species}</p>
