@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './components/Navbar';
 import CharacterCard from './components/CharacterCard';
@@ -11,6 +11,13 @@ const App = () => {
   const [characters, setCharacters] = useState([]);
   const [locationId, setLocationId] = useState(Math.floor(Math.random() * 126) + 1);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleLocationUpdate = (newLocationId) => {
+    if (newLocationId !== locationId) {
+      setLocationId(newLocationId);
+      setCurrentPage(1);
+    }
+  };
 
   const onLocationChange = async (residents) => {
     const characterPromises = residents.map((url) => axios.get(url));
@@ -28,22 +35,21 @@ const App = () => {
     <div className="app">
       <Navbar />
       <h1>Personajes de Rick y Morty</h1>
-      <LocationSearch setLocationId={setLocationId} />
-      <RandomLocation locationId={locationId} onLocationChange={onLocationChange} />
+      <LocationSearch setLocationId={handleLocationUpdate} />
+      <RandomLocation locationId={locationId} onLocationChange={onLocationChange} setLocationId={handleLocationUpdate} />
       <div className="character-grid">
         {getPaginatedData(characters, 10, currentPage).map((character) => (
           <CharacterCard key={character.id} character={character} />
         ))}
       </div>
       {characters.length > 10 && (
-  <Pagination
-    itemsPerPage={10}
-    totalItems={characters.length}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-)}
-
+        <Pagination
+          itemsPerPage={10}
+          totalItems={characters.length}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
     </div>
   );
 };
