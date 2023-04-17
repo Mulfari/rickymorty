@@ -1,27 +1,23 @@
-import React, { useState } from "react";
-import Modal from "./Modal";
-import "./styles/CharacterCard.css";
+import React, { useState } from 'react';
+import CharacterModal from './CharacterModal';
+import './styles/CharacterCard.css';
 
 const CharacterCard = ({ character }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleOpenModal = () => {
-    setModalOpen(true);
+  const handleCardClick = () => {
+    setShowModal(true);
   };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
-    <div className="card" onClick={handleOpenModal}>
-      <img className="card-img" src={character.image} alt={character.name} />
-      <p className="card-name">{character.name}</p>
-      <Modal isOpen={modalOpen} onClose={handleCloseModal}>
-        {}
-        <h2>{character.name}</h2>
-        <img src={character.image} alt={character.name} />
-      </Modal>
+    <div className="character-card" onClick={handleCardClick}>
+      <img src={character.image} alt={character.name} />
+      <h3>{character.name}</h3>
+      {showModal && <CharacterModal character={character} onClose={closeModal} />}
     </div>
   );
 };
