@@ -34,7 +34,6 @@ const App = () => {
   return (
     <div className="app">
       <Navbar />
-      <h1>Personajes de Rick y Morty</h1>
       <LocationSearch setLocationId={handleLocationUpdate} />
       <RandomLocation locationId={locationId} onLocationChange={onLocationChange} setLocationId={handleLocationUpdate} />
       <div className="character-grid">

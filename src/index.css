@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  background-image: url('https://images3.alphacoders.com/812/812062.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #f2f2f2; /* color de fondo de respaldo */
+  
+}
