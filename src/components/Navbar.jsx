@@ -1,27 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import './styles/Navbar.css';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <ul>
-        <li>
-          <NavLink activeClassName="active-link" exact to="/">
-            Personajes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName="active-link" to="/episodios">
-            Episodios
-          </NavLink>
-        </li>
-        <li>
-          <NavLink activeClassName="active-link" to="/ubicaciones">
-            Ubicaciones
-          </NavLink>
-        </li>
-      </ul>
+      <div className="navbar-brand">
+        <a href="/">Rick & Morty</a>
+      </div>
+      <div className="navbar-menu">
+        <ul>
+          <li>
+            <a href="/">Inicio</a>
+          </li>
+          <li>
+            <a href="/personajes">Personajes</a>
+          </li>
+          <li>
+            <a href="/episodios">Episodios</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };

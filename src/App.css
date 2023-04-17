@@ -9,11 +9,12 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.characters-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
+  margin: 1rem 0;
+  padding: 0 1rem;
 }
 
 .character-card {
