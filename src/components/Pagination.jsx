@@ -31,7 +31,9 @@ const Pagination = ({ itemsPerPage, totalItems, currentPage, setCurrentPage }) =
       >
         Anterior
       </button>
-      {renderPageNumbers()}
+      <div className="page-numbers-container">
+        {renderPageNumbers()}
+      </div>
       <button
         className="pagination-button"
         onClick={() => handleClick(currentPage < totalPages ? currentPage + 1 : currentPage)}
