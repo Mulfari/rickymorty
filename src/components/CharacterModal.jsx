@@ -12,7 +12,8 @@ const CharacterModal = ({ character, onClose }) => {
   return (
     <div className="modal-overlay" onClick={closeModalOnOverlayClick}>
       <div className="modal-content">
-        <button className="close-modal" onClick={onClose}>
+      <button className="close-modal" onClick={() => onClose()}>
+
           &times;
         </button>
         <h2>{character.name}</h2>
