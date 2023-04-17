@@ -37,7 +37,7 @@ const App = () => {
       <LocationSearch setLocationId={handleLocationUpdate} />
       <RandomLocation locationId={locationId} onLocationChange={onLocationChange} setLocationId={handleLocationUpdate} />
       <div className="character-grid">
-        {getPaginatedData(characters, 10, currentPage).map((character) => (
+        {getPaginatedData(characters, 12, currentPage).map((character) => (
           <CharacterCard key={character.id} character={character} />
         ))}
       </div>
